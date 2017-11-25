@@ -35,26 +35,14 @@ class amapkfc(scrapy.Spider):
                 item['tag'], item['business_area'], item['price'], item['aoi'] = "", "", "", ""
 
                 for domain in object['domain_list']:
-                    # pattern = re.compile('>([\w|\s]+)<')
                     if domain['name'] == 'tag' and 'value' in domain:
-                        # item['tag'] = domain['value'].xpath('font/text()').extract()
                         taghtml = etree.HTML(domain['value'])
                         item['tag'] = taghtml.xpath('//font/text()')
-                        # tagtext = ""
-                        # for n in tagnode:
-                        #     tagtext = tagtext + "," + n.text
-                        # item['tag'] = tagtext
-                        # item['tag'] = taghtml.xpath('//font/text()')
-                        # item['tag'] = re.findall(pattern, domain['value'])
-                        # item['tag'] = domain['value']
                     elif domain['name'] == 'business_area' and 'value' in domain:
                         item['business_area'] = domain['value']
                     elif domain['name'] == 'price' and 'value' in domain:
-                        # item['price'] = domain['value'].xpath('font/last()/text()').extract()
                         pricehtml = etree.HTML(domain['value'])
                         item['price'] = pricehtml.xpath('//font[3]/text()')[0]
-                        # item['price'] = re.findall(pattern, domain['value'])
-                        # item['price'] = domain['value']
                     elif domain['name'] == 'aoi' and 'value' in domain:
                         item['aoi'] = domain['value']
                     else:

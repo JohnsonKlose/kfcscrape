@@ -47,3 +47,5 @@ class amapkfcItem(scrapy.Item):
     business_area = scrapy.Field()
     price = scrapy.Field()
     aoi = scrapy.Field()
+
+    pass

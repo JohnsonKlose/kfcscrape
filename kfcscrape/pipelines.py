@@ -12,8 +12,7 @@ import logging
 class KfcscrapePipeline(object):
     def process_item(self, item, spider):
 
-        conn = psycopg2.connect(database='scarp', user='postgres', password='86732629jj', host='123.206.102.193',
-                                port='5432')
+        conn = psycopg2.connect(database='xxx', user='xxx', password='xxx', host='xxx', port='5432')
         cur = conn.cursor()
 
         if spider.name == 'baidukfc':
